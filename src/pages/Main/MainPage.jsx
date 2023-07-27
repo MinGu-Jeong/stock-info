@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import MainIndex from "./MainIndex";
 import Nav from "../../components/Nav";
+import StockList from "./StockList";
 
 const MainContainer = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ export default function Main() {
         <Nav />
         <MainContent>
           <MainIndex />
+          <StockList />
         </MainContent>
       </MainContainer>
     </div>
