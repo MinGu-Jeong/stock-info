@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import MainIndex from "./MainIndex";
 import Nav from "../../components/Nav";
-import StockList from "./StockList";
+import { Outlet } from "react-router-dom";
 
 const MainContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const MainContainer = styled.div`
 const MainContent = styled.div`
   padding-top: 50px;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   background: #f2f5f7;
   box-sizing: border-box;
 `;
@@ -21,7 +21,7 @@ export default function Main() {
         <Nav />
         <MainContent>
           <MainIndex />
-          <StockList />
+          <Outlet />
         </MainContent>
       </MainContainer>
     </div>
