@@ -19,7 +19,6 @@ export default function NewsPage() {
       })
       .then((res) => {
         setNewsData(res.data.items);
-        console.log(res.data.items);
       });
   }, [page]);
   const handleNextPage = () => {
@@ -53,7 +52,12 @@ export default function NewsPage() {
             })}
 
             <S.PageWrapper>
-              <S.PrevPage onClick={handlePrevPage} />
+              {page === 1 ? (
+                <S.PrevPageDisabled />
+              ) : (
+                <S.PrevPage onClick={handlePrevPage} />
+              )}
+              <S.PageNumber>{Math.round(page / 10) + 1}</S.PageNumber>
               <S.NextPage onClick={handleNextPage} />
             </S.PageWrapper>
           </S.NewsContainer>

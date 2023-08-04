@@ -65,3 +65,20 @@ export const PrevPage = styled.div`
   cursor: pointer;
   position: relative;
 `;
+export const PrevPageDisabled = styled.div`
+  width: 0;
+  height: 0;
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+  border-right: 25px solid #929294;
+  border-left: 25px solid transparent;
+  border-top-right-radius: 3px;
+  cursor: pointer;
+  position: relative;
+`;
+export const PageNumber = styled.div`
+  width: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+`;
