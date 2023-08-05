@@ -1,8 +1,4 @@
 import * as S from "./MainIndex.style";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "../../styles/swiper.style.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -15,6 +11,7 @@ export default function MainIndex() {
   const [changeRateKospi, setChangeRateKospi] = useState(0);
   const [kosdaq, setKosdaq] = useState(0);
   const [changeRateKosdaq, setChangeRateKosdaq] = useState(0);
+
   useEffect(() => {
     axios
       .get(
@@ -125,17 +122,6 @@ export default function MainIndex() {
           )}
         </S.IndexItemWrapper>
       </S.IndexContainer>
-      {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper> */}
     </div>
   );
 }

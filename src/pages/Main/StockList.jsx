@@ -3,51 +3,50 @@ import * as S from "./StockList.style";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const marketCapTopList = [
+  "삼성전자",
+  "LG에너지솔루션",
+  "SK하이닉스",
+  "삼성바이오로직스",
+  "POSCO홀딩스",
+  "삼성전자우",
+  "LG화학",
+  "삼성SDI",
+  "현대차",
+  "포스코퓨처엠",
+  "NAVER",
+  "기아",
+  "카카오",
+  "현대모비스",
+  "셀트리온",
+  "KB금융",
+  "삼성물산",
+  "SK이노베이션",
+  "신한지주",
+  "LG전자",
+  "포스코인터내셔널",
+  "카카오뱅크",
+  "삼성생명",
+  "LG",
+  "한국전력",
+  "HD현대중공업",
+  "하나금융지주",
+  "SK",
+  "KT&G",
+  "삼성전기",
+  "삼성화재",
+  "두산에너빌리티",
+  "삼성에스디에스",
+  "한화오션",
+  "하이브",
+  "메리츠금융지주",
+  "SK텔레콤",
+  "고려아연",
+  "대한항공",
+  "HMM",
+  "금양",
+];
 export default function StockList() {
-  const marketCapTopList = [
-    "삼성전자",
-    "LG에너지솔루션",
-    "SK하이닉스",
-    "삼성바이오로직스",
-    "POSCO홀딩스",
-    "삼성전자우",
-    "LG화학",
-    "삼성SDI",
-    "현대차",
-    "포스코퓨처엠",
-    "NAVER",
-    "기아",
-    "카카오",
-    "현대모비스",
-    "셀트리온",
-    "KB금융",
-    "삼성물산",
-    "SK이노베이션",
-    "신한지주",
-    "LG전자",
-    "포스코인터내셔널",
-    "카카오뱅크",
-    "삼성생명",
-    "LG",
-    "한국전력",
-    "HD현대중공업",
-    "하나금융지주",
-    "SK",
-    "KT&G",
-    "삼성전기",
-    "삼성화재",
-    "두산에너빌리티",
-    "삼성에스디에스",
-    "한화오션",
-    "하이브",
-    "메리츠금융지주",
-    "SK텔레콤",
-    "고려아연",
-    "대한항공",
-    "HMM",
-    "금양",
-  ];
-
   const navigate = useNavigate();
   const [itemShow, setItemShow] = useState(5);
   const handleShowMore = () => {
@@ -106,7 +105,10 @@ export default function StockList() {
             {marketCapTopList.slice(0, itemShow).map((itemName, index) => {
               const stockItem = stockData[index];
               return (
-                <S.StockItemWrapper key={index}>
+                <S.StockItemWrapper
+                  key={index}
+                  onClick={() => navigate(`/stock?id=${stockItem?.srtnCd}`)}
+                >
                   <S.StockItem>{itemName}</S.StockItem>
                   <S.StockItem>{stockItem?.clpr}</S.StockItem>
                   <S.StockItem>

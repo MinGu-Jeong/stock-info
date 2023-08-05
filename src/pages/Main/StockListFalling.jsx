@@ -12,18 +12,20 @@ export default function StockListFalling() {
   const [stockData, setStockData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get(
+      const res = await axios.get(
         `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=${
           import.meta.env.VITE_REACT_APP_STOCK_PRICE_API_KEY
         }&numOfRows=5&pageNo=${itemShow / 5}&resultType=json&endFltRt=-20`
       );
-      const data = response.data.response.body.items.item;
+      const data = res.data.response.body.items.item;
       data.forEach((stock) => {
         let fltRt = parseFloat(stock.fltRt);
         stock.fltRt =
           fltRt > 0 ? `+${fltRt.toFixed(2)}%` : `${fltRt.toFixed(2)}%`;
       });
-      setStockData((prevStockData) => [...prevStockData, ...data]);
+      if (stockData.length === 0) {
+        setStockData(data);
+      } else setStockData((prevStockData) => [...prevStockData, ...data]);
     };
     getData();
   }, [itemShow]);
@@ -52,7 +54,10 @@ export default function StockListFalling() {
               <S.StockItem>MY 종목추가</S.StockItem>
             </S.StockItemWrapper>
             {stockData.map((stockItem, index) => (
-              <S.StockItemWrapper key={index}>
+              <S.StockItemWrapper
+                key={index}
+                onClick={() => navigate(`/stock?id=${stockItem?.srtnCd}`)}
+              >
                 <S.StockItem>{stockItem?.itmsNm}</S.StockItem>
                 <S.StockItem>{stockItem?.clpr}</S.StockItem>
                 <S.StockItem>
@@ -67,7 +72,6 @@ export default function StockListFalling() {
                   )}
                 </S.StockItem>
                 <S.StockItem>
-                  {" "}
                   {(parseInt(stockItem?.mrktTotAmt) / 100000000).toFixed(0)}
                 </S.StockItem>
                 <S.StockItem>추가</S.StockItem>
