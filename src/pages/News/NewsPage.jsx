@@ -31,7 +31,6 @@ export default function NewsPage() {
   return (
     <div>
       <S.FlexColumn>
-        <Nav />
         <S.ContentMargin>
           <S.NewsContainer>
             <h1>증시 뉴스</h1>

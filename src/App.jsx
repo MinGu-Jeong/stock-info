@@ -10,11 +10,14 @@ import StockList from "./pages/Main/StockList";
 import StockListRising from "./pages/Main/StockListRising";
 import StockListFalling from "./pages/Main/StockListFalling";
 import NewsPage from "./pages/News/NewsPage";
+import StockPage from "./pages/Stock/StockPage";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route path="/" element={<Main />}>
             <Route index element={<StockList />} />
@@ -24,6 +27,7 @@ function App() {
           </Route>
 
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/stock" element={<StockPage />} />
         </Routes>
       </BrowserRouter>
     </div>

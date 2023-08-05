@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import MainIndex from "./MainIndex";
-import Nav from "../../components/Nav";
 import { Outlet } from "react-router-dom";
 
 const MainContainer = styled.div`
@@ -18,7 +17,6 @@ export default function Main() {
   return (
     <div>
       <MainContainer>
-        <Nav />
         <MainContent>
           <MainIndex />
           <Outlet />

@@ -17,6 +17,8 @@ export default function Nav() {
     const currentPath = location.pathname;
     if (currentPath === "/") {
       setMenu("홈");
+    } else if (currentPath === "/stock") {
+      setMenu("주식");
     } else if (currentPath === "/news") {
       setMenu("뉴스");
     }
@@ -30,7 +32,13 @@ export default function Nav() {
       ) : (
         <S.NavMenu onClick={() => navigate("/")}>홈</S.NavMenu>
       )}
-      <S.NavMenu>주식</S.NavMenu>
+      {menu === "주식" ? (
+        <S.NavMenuCurrent onClick={() => navigate("/stock")}>
+          주식
+        </S.NavMenuCurrent>
+      ) : (
+        <S.NavMenu onClick={() => navigate("/stock")}>주식</S.NavMenu>
+      )}
       <S.NavMenu>etf</S.NavMenu>
       {menu === "뉴스" ? (
         <S.NavMenuCurrent onClick={() => navigate("/news")}>
