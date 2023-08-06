@@ -23,6 +23,8 @@ export const NewsContainer = styled.div`
   margin-bottom: 50px;
   padding-left: 50px;
   border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const NewsWrapper = styled.div`
