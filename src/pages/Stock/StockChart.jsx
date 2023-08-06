@@ -13,7 +13,14 @@ import {
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip
+);
 
 export default function StockChart({ stockData }) {
   const [stocksData, setStocksData] = useState([]);
@@ -31,13 +38,13 @@ export default function StockChart({ stockData }) {
 
   const options = {
     responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
     plugins: {
-      interaction: {
-        mode: "index",
-        intersect: false,
-      },
       title: {
-        display: true,
+        display: false,
         text: `${stockData?.itmsNm} 30일 주가`,
       },
     },
@@ -52,7 +59,6 @@ export default function StockChart({ stockData }) {
     labels,
     datasets: [
       {
-        label: `${stockData?.itmsNm} 주가`,
         data: stocksData.map((item) => item.clpr).reverse(),
         borderColor: "#9EC2EC",
         backgroundColor: "#FFF",
