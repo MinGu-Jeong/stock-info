@@ -3,6 +3,8 @@ import * as S from "./StockPage.style";
 import * as N from "../News/News.style";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import StockNews from "./StockNews";
+import StockChart from "./StockChart";
 export default function StockPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -23,29 +25,7 @@ export default function StockPage() {
           fltRt > 0 ? `+${fltRt}` : `${fltRt}`;
       });
   }, []);
-  const [page, setPage] = useState(1);
-  const [newsData, setNewsData] = useState([]);
-  useEffect(() => {
-    axios
-      .get("/api/v1/search/news", {
-        params: { query: `${stockData?.itmsNm}`, start: page, display: 5 },
-        headers: {
-          "X-Naver-Client-Id": import.meta.env.VITE_REACT_APP_NAVER_CLIENT_ID,
-          "X-Naver-Client-Secret": import.meta.env
-            .VITE_REACT_APP_NAVER_CLIENT_SECRET,
-        },
-      })
-      .then((res) => {
-        setNewsData(res.data.items);
-      });
-  }, [page, stockData]);
-  const handleNextPage = () => {
-    setPage(page + 5);
-  };
-  const handlePrevPage = () => {
-    setPage(page - 5);
-    if (page <= 1) setPage(1);
-  };
+
   return (
     <div>
       <S.FlexColumn>
@@ -86,34 +66,8 @@ export default function StockPage() {
               </S.StockDetailWrapper>
             </S.StockDetailRightWrapper>
           </S.StockDetailContainer>
-          <N.NewsContainer>
-            <h1>{stockData?.itmsNm} 종목뉴스</h1>
-            {newsData.map((news) => {
-              return (
-                <a
-                  key={news.link}
-                  href={news.link}
-                  target="_blank"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <N.NewsWrapper>
-                    <h2 dangerouslySetInnerHTML={{ __html: news.title }} />
-                    <p dangerouslySetInnerHTML={{ __html: news.description }} />
-                  </N.NewsWrapper>
-                </a>
-              );
-            })}
-
-            <N.PageWrapper>
-              {page === 1 ? (
-                <N.PrevPageDisabled />
-              ) : (
-                <N.PrevPage onClick={handlePrevPage} />
-              )}
-              <N.PageNumber>{Math.round(page / 10) + 1}</N.PageNumber>
-              <N.NextPage onClick={handleNextPage} />
-            </N.PageWrapper>
-          </N.NewsContainer>
+          <StockChart stockData={stockData} />
+          <StockNews stockData={stockData} />
         </S.ContentMargin>
       </S.FlexColumn>
     </div>
