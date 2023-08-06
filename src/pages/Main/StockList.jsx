@@ -100,7 +100,7 @@ export default function StockList() {
               <S.StockItem>현재가</S.StockItem>
               <S.StockItem>등락률</S.StockItem>
               <S.StockItem>시가총액(억)</S.StockItem>
-              <S.StockItem>MY 종목추가</S.StockItem>
+              <S.StockItem>MY 종목</S.StockItem>
             </S.StockItemWrapper>
             {marketCapTopList.slice(0, itemShow).map((itemName, index) => {
               const stockItem = stockData[index];
