@@ -49,7 +49,7 @@ export default function Nav() {
       )}
       <S.NavMenu>MY</S.NavMenu>
       <S.NavAlarmDateContainer>
-        <S.NavAlarm>알람발생 위치</S.NavAlarm>
+        <S.NavAlarm></S.NavAlarm>
         <S.NavDate>{date}</S.NavDate>
       </S.NavAlarmDateContainer>
     </S.Nav>

@@ -55,7 +55,6 @@ export const NavAlarm = styled.div`
   margin-left: 100px;
   width: 250px;
   height: 80px;
-  border: 1px solid #000;
   text-align: center;
 `;
 export const NavDate = styled.div`
