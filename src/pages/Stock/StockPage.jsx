@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import * as S from "./StockPage.style";
-import * as N from "../News/News.style";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import StockDetail from "./StockDetail";
 import StockNews from "./StockNews";
 import StockChart from "./StockChart";
 export default function StockPage() {
@@ -25,47 +25,11 @@ export default function StockPage() {
           fltRt > 0 ? `+${fltRt}` : `${fltRt}`;
       });
   }, []);
-
   return (
     <div>
       <S.FlexColumn>
         <S.ContentMargin>
-          <S.StockDetailContainer>
-            <S.StockDetailLeftWrapper>
-              <S.StockId>{stockId}</S.StockId>
-              <S.StockName>{stockData?.itmsNm}</S.StockName>
-              <S.StockPrice>{stockData?.clpr}</S.StockPrice>
-              <S.StockPercentChange isRising={stockData?.fltRt > 0}>
-                {stockData?.fltRt}%
-              </S.StockPercentChange>
-            </S.StockDetailLeftWrapper>
-            <S.StockDetailRightWrapper>
-              <S.StockDetailWrapper>
-                <S.StockInfo>전일</S.StockInfo>
-                <S.StockInfoValue>
-                  {stockData?.clpr - stockData?.vs}
-                </S.StockInfoValue>
-              </S.StockDetailWrapper>
-              <S.StockDetailWrapper>
-                <S.StockInfo>거래량(억)</S.StockInfo>
-                <S.StockInfoValue>
-                  {(parseInt(stockData?.mrktTotAmt) / 100000000).toFixed(0)}
-                </S.StockInfoValue>
-              </S.StockDetailWrapper>
-              <S.StockDetailWrapper>
-                <S.StockInfo>시가</S.StockInfo>
-                <S.StockInfoValue>{stockData?.mkp}</S.StockInfoValue>
-              </S.StockDetailWrapper>
-              <S.StockDetailWrapper>
-                <S.StockInfo>고가</S.StockInfo>
-                <S.StockInfoValue>{stockData?.hipr}</S.StockInfoValue>
-              </S.StockDetailWrapper>
-              <S.StockDetailWrapper>
-                <S.StockInfo>저가</S.StockInfo>
-                <S.StockInfoValue>{stockData.lopr}</S.StockInfoValue>
-              </S.StockDetailWrapper>
-            </S.StockDetailRightWrapper>
-          </S.StockDetailContainer>
+          <StockDetail stockId={stockId} stockData={stockData} />
           <StockChart stockData={stockData} />
           <StockNews stockData={stockData} />
         </S.ContentMargin>
