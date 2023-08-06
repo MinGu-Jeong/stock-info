@@ -104,3 +104,15 @@ export const StockInfoValue = styled.div`
   font-weight: 700;
   line-height: normal;
 `;
+export const StockChartContainer = styled.div`
+  display: flex;
+  width: 1050px;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+`;
