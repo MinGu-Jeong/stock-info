@@ -52,7 +52,7 @@ export default function StockNews({ stockData }) {
           ) : (
             <S.PrevPage onClick={handlePrevPage} />
           )}
-          <S.PageNumber>{Math.round(page / 10) + 1}</S.PageNumber>
+          <S.PageNumber>{Math.round(page / 5) + 1}</S.PageNumber>
           <S.NextPage onClick={handleNextPage} />
         </S.PageWrapper>
       </S.NewsContainer>
