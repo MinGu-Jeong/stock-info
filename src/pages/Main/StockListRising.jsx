@@ -18,7 +18,7 @@ export default function StockListRising() {
         }&numOfRows=5&pageNo=${itemShow / 5}&resultType=json&beginFltRt=20`
       );
       const data = res.data.response.body.items.item;
-      data.forEach((stock) => {
+      data.map((stock) => {
         let fltRt = parseFloat(stock.fltRt);
         stock.fltRt =
           fltRt > 0 ? `+${fltRt.toFixed(2)}%` : `${fltRt.toFixed(2)}%`;
