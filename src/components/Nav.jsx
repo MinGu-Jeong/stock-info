@@ -17,6 +17,7 @@ export default function Nav() {
     const currentPath = location.pathname;
     if (currentPath === "/") {
       setMenu("홈");
+      window.scrollTo(0, 0);
     } else if (currentPath === "/stock") {
       setMenu("주식");
     } else if (currentPath === "/news") {
