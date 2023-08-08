@@ -5,12 +5,14 @@ import axios from "axios";
 import StockDetail from "./StockDetail";
 import StockNews from "./StockNews";
 import StockChart from "./StockChart";
+import Loading from "../../styles/Loading";
 export default function StockPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const stockId = params.get("id");
-  const [stockData, setStockData] = useState({});
+  const [stockData, setStockData] = useState(null);
   useEffect(() => {
+    window.scrollTo(0, 0);
     axios
       .get(
         `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=${
@@ -18,20 +20,28 @@ export default function StockPage() {
         }&resultType=json&likeSrtnCd=${stockId}`
       )
       .then((res) => {
-        setStockData(res.data.response.body.items.item[0]);
         let fltRt = parseFloat(res.data.response.body.items.item[0].fltRt);
         fltRt = fltRt.toFixed(2);
         res.data.response.body.items.item[0].fltRt =
           fltRt > 0 ? `+${fltRt}` : `${fltRt}`;
+        setStockData(res.data.response.body.items.item[0]);
       });
   }, []);
   return (
     <div>
       <S.FlexColumn>
         <S.ContentMargin>
-          <StockDetail stockId={stockId} stockData={stockData} />
-          <StockChart stockData={stockData} />
-          <StockNews stockData={stockData} />
+          {stockData ? (
+            <>
+              <StockDetail stockId={stockId} stockData={stockData} />
+              <StockChart stockData={stockData} />
+              <StockNews stockData={stockData} />
+            </>
+          ) : (
+            <S.LoadingBackground>
+              <Loading />
+            </S.LoadingBackground>
+          )}
         </S.ContentMargin>
       </S.FlexColumn>
     </div>

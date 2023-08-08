@@ -8,32 +8,32 @@ export default function StockDetail({ stockId, stockData }) {
       <S.StockDetailContainer>
         <S.StockDetailLeftWrapper>
           <S.StockId>{stockId}</S.StockId>
-          <S.StockName>{stockData?.itmsNm}</S.StockName>
-          <S.StockPrice>{stockData?.clpr}</S.StockPrice>
+          <S.StockName>{stockData.itmsNm}</S.StockName>
+          <S.StockPrice>{stockData.clpr}</S.StockPrice>
           <S.StockPercentChange isRising={stockData?.fltRt > 0}>
-            {stockData?.fltRt}%
+            {stockData.fltRt}%
           </S.StockPercentChange>
         </S.StockDetailLeftWrapper>
         <S.StockDetailRightWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>전일</S.StockInfo>
             <S.StockInfoValue>
-              {stockData?.clpr - stockData?.vs}
+              {stockData.clpr - stockData?.vs}
             </S.StockInfoValue>
           </S.StockDetailWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>거래량(억)</S.StockInfo>
             <S.StockInfoValue>
-              {(parseInt(stockData?.mrktTotAmt) / 100000000).toFixed(0)}
+              {(parseInt(stockData.mrktTotAmt) / 100000000).toFixed(0)}
             </S.StockInfoValue>
           </S.StockDetailWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>시가</S.StockInfo>
-            <S.StockInfoValue>{stockData?.mkp}</S.StockInfoValue>
+            <S.StockInfoValue>{stockData.mkp}</S.StockInfoValue>
           </S.StockDetailWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>고가</S.StockInfo>
-            <S.StockInfoValue>{stockData?.hipr}</S.StockInfoValue>
+            <S.StockInfoValue>{stockData.hipr}</S.StockInfoValue>
           </S.StockDetailWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>저가</S.StockInfo>
