@@ -116,3 +116,11 @@ export const StockChartContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
 `;
+export const LoadingBackground = styled.div`
+  background-color: #f2f5f7;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+`;
