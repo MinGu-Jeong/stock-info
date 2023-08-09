@@ -10,16 +10,14 @@ export default function StockDetail({ stockId, stockData }) {
           <S.StockId>{stockId}</S.StockId>
           <S.StockName>{stockData.itmsNm}</S.StockName>
           <S.StockPrice>{stockData.clpr}</S.StockPrice>
-          <S.StockPercentChange isRising={stockData?.fltRt > 0}>
+          <S.StockPercentChange isRising={stockData.fltRt > 0}>
             {stockData.fltRt}%
           </S.StockPercentChange>
         </S.StockDetailLeftWrapper>
         <S.StockDetailRightWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>전일</S.StockInfo>
-            <S.StockInfoValue>
-              {stockData.clpr - stockData?.vs}
-            </S.StockInfoValue>
+            <S.StockInfoValue>{stockData.clpr - stockData.vs}</S.StockInfoValue>
           </S.StockDetailWrapper>
           <S.StockDetailWrapper>
             <S.StockInfo>거래량(억)</S.StockInfo>
