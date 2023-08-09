@@ -14,6 +14,7 @@ export const NavTitle = styled.div`
   width: 200px;
   height: 100px;
   background-color: #fff;
+  cursor: pointer;
 `;
 export const NavMenuCurrent = styled.div`
   width: 100px;

@@ -27,7 +27,9 @@ export default function Nav() {
 
   return (
     <S.Nav>
-      <S.NavTitle></S.NavTitle>
+      <S.NavTitle onClick={() => navigate("/")}>
+        <img src="../../src/images/title.png" width="200" height="100" />
+      </S.NavTitle>
       {menu === "홈" ? (
         <S.NavMenuCurrent onClick={() => navigate("/")}>홈</S.NavMenuCurrent>
       ) : (
