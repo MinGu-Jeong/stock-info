@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <td>
-      <img width="1904" alt="mainpage" src="https://github.com/MinGu-Jeong/owncocktail-database-teamproject/assets/51395707/40052aff-10ed-48fc-bbc3-f035a32044dc">
+      <img width="1905" alt="mainpage-new" src="https://github.com/MinGu-Jeong/stock-info/assets/51395707/fcb64baf-4288-47e3-8f09-1072494467e3">
     </td>
   </tr>
 </table>
