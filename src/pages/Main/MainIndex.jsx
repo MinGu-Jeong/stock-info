@@ -18,10 +18,10 @@ export default function MainIndex() {
         "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWUSD"
       )
       .then((res) => {
-        setExchangeRateUSD(res.data[0].basePrice);
         let changeRate = parseFloat(
           (res.data[0].signedChangeRate * 100).toFixed(2)
         );
+        setExchangeRateUSD(res.data[0].basePrice);
         setChangeRateUSD(changeRate > 0 ? `+${changeRate}` : changeRate);
       });
   }, []);
@@ -31,10 +31,10 @@ export default function MainIndex() {
         "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWJPY"
       )
       .then((res) => {
-        setExchangeRateJPY(res.data[0].basePrice);
         let changeRate = parseFloat(
           (res.data[0].signedChangeRate * 100).toFixed(2)
         );
+        setExchangeRateJPY(res.data[0].basePrice);
         setChangeRateJPY(changeRate > 0 ? `+${changeRate}` : changeRate);
       });
   }, []);
@@ -46,9 +46,9 @@ export default function MainIndex() {
         }&resultType=json&idxNm=%EC%BD%94%EC%8A%A4%ED%94%BC`
       )
       .then((res) => {
-        setKospi(res.data.response.body.items.item[0].hipr);
         let changeRate = parseFloat(res.data.response.body.items.item[0].fltRt);
         changeRate = changeRate.toFixed(2);
+        setKospi(res.data.response.body.items.item[0].hipr);
         setChangeRateKospi(changeRate > 0 ? `+${changeRate}` : changeRate);
       });
   }, []);
@@ -60,9 +60,9 @@ export default function MainIndex() {
         }&resultType=json&idxNm=%EC%BD%94%EC%8A%A4%EB%8B%A5`
       )
       .then((res) => {
-        setKosdaq(res.data.response.body.items.item[0].hipr);
         let changeRate = parseFloat(res.data.response.body.items.item[0].fltRt);
         changeRate = changeRate.toFixed(2);
+        setKosdaq(res.data.response.body.items.item[0].hipr);
         setChangeRateKosdaq(changeRate > 0 ? `+${changeRate}` : changeRate);
       });
   }, []);
